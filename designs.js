@@ -10,12 +10,15 @@ function makeGrid(height,width) {
 	// create new elements and append
 	for(let i=0; i<height; i++){
 		let newTR = document.createElement('tr');
-		//newTR.setAttribute('style', 'height: 20px;');
 		theRow = theCanvas.appendChild(newTR);
 		for(let j=0; j<width; j++){
 			let newTD = document.createElement('td');
-			//newTD.setAttribute('style', 'height: 20px;');
 			theRow.appendChild(newTD);
+			// Event handler for the cells to have color
+			document.querySelector("#pixelCanvas").addEventListener("click", function(e) {
+				e.preventDefault(); //this prevents the page from re-loading
+				e.target.style.backgroundColor = color;
+			});
 		}
 	}
 
@@ -24,11 +27,13 @@ function makeGrid(height,width) {
 		e.preventDefault(); //this prevents the page from re-loading
 		color = document.querySelector('#colorPicker').value;
 	});
+/*
 	// Event handler for the cells to have color
 	document.querySelector("#pixelCanvas").addEventListener("click", function(e) {
 		e.preventDefault(); //this prevents the page from re-loading
 		e.target.style.backgroundColor = color;
 	});
+*/
 } 
 
 // Event handler
